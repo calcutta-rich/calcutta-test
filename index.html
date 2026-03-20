@@ -196,6 +196,44 @@ const BRACKET={
 let gameEntries=[];
 let allEvents=[];
 
+// Hardcoded seed lookup - every team in the tournament. Used to show correct seed for any opponent.
+const SEED_MAP={
+  "duke":1,"blue devils":1,"siena":16,"saints":16,"ohio st":8,"ohio state":8,"buckeyes":8,"tcu":9,"horned frogs":9,
+  "st. john":5,"st john":5,"red storm":5,"northern iowa":12,"panthers":12,
+  "kansas":4,"jayhawks":4,"cal baptist":13,"lancers":13,"louisville":6,"cardinals":6,
+  "south florida":11,"usf":11,"bulls":11,"michigan st":3,"michigan state":3,"spartans":3,
+  "n. dakota":14,"north dakota st":14,"bison":14,"ucla":7,"bruins":7,"ucf":10,"knights":10,
+  "uconn":2,"connecticut":2,"huskies":2,"furman":15,"paladins":15,
+  "arizona":1,"wildcats":1,"long island":16,"liu":16,"sharks":16,"villanova":8,"utah st":9,"utah state":9,"aggies":9,
+  "wisconsin":5,"badgers":5,"high point":12,"arkansas":4,"razorbacks":4,"hawai":13,"hawaii":13,"rainbow":13,
+  "byu":6,"brigham young":6,"cougars":6,"texas longhorns":11,"gonzaga":3,"bulldogs":3,"zags":3,
+  "kennesaw":14,"owls":14,"miami hurr":7,"miami (fl)":7,"hurricanes":7,"missouri":10,"mizzou":10,"tigers":10,
+  "purdue":2,"boilermakers":2,"queens":15,"royals":15,
+  "florida gators":1,"gators":1,"prairie view":16,"clemson":8,"iowa hawkeyes":9,"iowa hawk":9,
+  "vanderbilt":5,"commodores":5,"mcneese":12,"cowboys":12,
+  "nebraska":4,"cornhuskers":4,"troy":13,"trojans":13,
+  "north carolina":6,"tar heels":6,"unc":6,"vcu":11,"rams":11,
+  "illinois":3,"fighting illini":3,"penn":14,"quakers":14,
+  "saint mary":7,"gaels":7,"texas a&m":10,"houston":2,
+  "idaho":15,"vandals":15,
+  "michigan wolverines":1,"wolverines":1,"howard":16,
+  "georgia":8,"saint louis":9,"billikens":9,
+  "texas tech":5,"red raiders":5,"akron":12,"zips":12,
+  "alabama":4,"crimson tide":4,"hofstra":13,"pride":13,
+  "tennessee vol":6,"volunteers":6,"miami oh":11,"miami (oh)":11,"redhawks":11,"miami redhawk":11,
+  "virginia":3,"cavaliers":3,"wright st":14,"wright state":14,"raiders":14,
+  "kentucky":7,"iowa st":2,"iowa state":2,"cyclones":2,"tennessee st":15,"tennessee state":15
+};
+
+function lookupSeed(name){
+  if(!name) return "?";
+  const n=name.toLowerCase();
+  for(const [key,seed] of Object.entries(SEED_MAP)){
+    if(n.includes(key)) return seed;
+  }
+  return "?";
+}
+
 function calcEarnings(rw){let t=0;for(let i=0;i<rw&&i<6;i++)t+=POT*PAYOUTS[i].pct;return Math.round(t*100)/100;}
 
 function matchESPN(comp,cfg){
@@ -311,7 +349,8 @@ async function fetchScores(){
 
         gameEntries.push({
           teamId:team.id, name:team.name, seed:team.seed, region:team.region, cost:team.cost,
-          day:dayLabel, round, status, myScore, oppScore, opponent:oppName, oppSeed:"",
+          day:dayLabel, round, status, myScore, oppScore, opponent:oppName,
+          oppSeed: lookupSeed(oppName)!=="?" ? lookupSeed(oppName) : team.oppSeed,
           timeCT, network, displayClock, espnSearch:team.espnSearch
         });
       });
