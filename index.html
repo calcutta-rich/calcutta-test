@@ -169,14 +169,14 @@ let activeTZ="CT";
 // Winners from Thu advance to Sat, winners from Fri advance to Sun
 const ADVANCE_MAP={"THU MAR 19":"SAT MAR 21","FRI MAR 20":"SUN MAR 22","SAT MAR 21":"THU MAR 26","SUN MAR 22":"FRI MAR 27","THU MAR 26":"SAT MAR 28","FRI MAR 27":"SUN MAR 29","SAT MAR 28":"FRI APR 3","SUN MAR 29":"SAT APR 4","FRI APR 3":"MON APR 6","SAT APR 4":"MON APR 6"};
 
-// Teams with hardcoded seeds that NEVER change
+// Teams with hardcoded seeds from official bracket - NEVER change
 const TEAMS=[
-  {id:"nebraska",name:"Nebraska",espnSearch:["nebraska"],seed:8,opponent:"Troy",oppSeed:9,day:"THU MAR 19",timeCT:"11:40 AM",network:"TBS",region:"Midwest",cost:93},
+  {id:"nebraska",name:"Nebraska",espnSearch:["nebraska"],seed:4,opponent:"Troy",oppSeed:13,day:"THU MAR 19",timeCT:"11:40 AM",network:"TBS",region:"South",cost:93},
   {id:"usf",name:"South Florida",espnSearch:["south florida","usf"],seed:11,opponent:"Louisville",oppSeed:6,day:"THU MAR 19",timeCT:"12:30 PM",network:"truTV",region:"East",cost:33},
   {id:"byu",name:"BYU",espnSearch:["byu","brigham young"],seed:6,opponent:"Texas",oppSeed:11,day:"THU MAR 19",timeCT:"6:25 PM",network:"TNT",region:"West",cost:81},
-  {id:"santaclara",name:"Santa Clara",espnSearch:["santa clara"],seed:14,opponent:"Kentucky",oppSeed:3,day:"FRI MAR 20",timeCT:"11:15 AM",network:"CBS",region:"South",cost:45},
-  {id:"tennessee",name:"Tennessee",espnSearch:["tennessee vol"],seed:5,opponent:"Miami (OH)",oppSeed:11,day:"FRI MAR 20",timeCT:"3:25 PM",network:"TNT",region:"South",cost:100},
-  {id:"iowa",name:"Iowa",espnSearch:["iowa hawkeyes"],seed:7,opponent:"Clemson",oppSeed:10,day:"FRI MAR 20",timeCT:"5:50 PM",network:"CBS",region:"South",cost:43},
+  {id:"santaclara",name:"Santa Clara",espnSearch:["santa clara"],seed:10,opponent:"Kentucky",oppSeed:7,day:"FRI MAR 20",timeCT:"11:15 AM",network:"CBS",region:"Midwest",cost:45},
+  {id:"tennessee",name:"Tennessee",espnSearch:["tennessee vol"],seed:6,opponent:"Miami (OH)",oppSeed:11,day:"FRI MAR 20",timeCT:"3:25 PM",network:"TNT",region:"Midwest",cost:100},
+  {id:"iowa",name:"Iowa",espnSearch:["iowa hawkeyes"],seed:9,opponent:"Clemson",oppSeed:8,day:"FRI MAR 20",timeCT:"5:50 PM",network:"CBS",region:"South",cost:43},
   {id:"uni",name:"Northern Iowa",espnSearch:["northern iowa"],seed:12,opponent:"St. John's",oppSeed:5,day:"FRI MAR 20",timeCT:"6:10 PM",network:"TBS",region:"East",cost:42},
   {id:"ucf",name:"UCF",espnSearch:["ucf","central florida"],seed:10,opponent:"UCLA",oppSeed:7,day:"FRI MAR 20",timeCT:"6:25 PM",network:"TNT",region:"East",cost:42},
   {id:"florida",name:"Florida",espnSearch:["florida gators"],seed:1,opponent:"Prairie View A&M",oppSeed:16,day:"FRI MAR 20",timeCT:"8:25 PM",network:"TBS",region:"South",cost:518},
@@ -186,9 +186,9 @@ const TEAMS=[
 
 const BRACKET={
   "East":[{s1:1,n1:"Duke",s2:16,n2:"Siena"},{s1:8,n1:"Ohio State",s2:9,n2:"TCU"},{s1:5,n1:"St. John's",s2:12,n2:"Northern Iowa"},{s1:4,n1:"Kansas",s2:13,n2:"Cal Baptist"},{s1:6,n1:"Louisville",s2:11,n2:"South Florida"},{s1:3,n1:"Michigan St",s2:14,n2:"N. Dakota St"},{s1:7,n1:"UCLA",s2:10,n2:"UCF"},{s1:2,n1:"UConn",s2:15,n2:"Furman"}],
-  "West":[{s1:1,n1:"Arizona",s2:16,n2:"LIU"},{s1:8,n1:"Villanova",s2:9,n2:"Utah State"},{s1:5,n1:"Wisconsin",s2:12,n2:"High Point"},{s1:4,n1:"Arkansas",s2:13,n2:"Hawai'i"},{s1:6,n1:"BYU",s2:11,n2:"Texas"},{s1:3,n1:"Gonzaga",s2:14,n2:"Kennesaw St"},{s1:7,n1:"Miami",s2:10,n2:"Missouri"},{s1:2,n1:"Purdue",s2:15,n2:"Queens"}],
-  "South":[{s1:1,n1:"Florida",s2:16,n2:"Prairie View"},{s1:8,n1:"Georgia",s2:9,n2:"Saint Louis"},{s1:5,n1:"Tennessee",s2:11,n2:"Miami OH"},{s1:4,n1:"Illinois",s2:13,n2:"Penn"},{s1:6,n1:"Clemson",s2:10,n2:"Iowa"},{s1:3,n1:"Kentucky",s2:14,n2:"Santa Clara"},{s1:7,n1:"Vanderbilt",s2:10,n2:"McNeese"},{s1:2,n1:"Houston",s2:15,n2:"Idaho"}],
-  "Midwest":[{s1:1,n1:"Michigan",s2:16,n2:"Howard"},{s1:8,n1:"Nebraska",s2:9,n2:"Troy"},{s1:5,n1:"UNC",s2:12,n2:"VCU"},{s1:4,n1:"Alabama",s2:13,n2:"Hofstra"},{s1:6,n1:"Saint Mary's",s2:10,n2:"Texas A&M"},{s1:3,n1:"Iowa State",s2:14,n2:"Tennessee St"},{s1:7,n1:"Virginia",s2:10,n2:"Wright St"},{s1:2,n1:"Texas Tech",s2:9,n2:"Akron"}],
+  "West":[{s1:1,n1:"Arizona",s2:16,n2:"Long Island"},{s1:8,n1:"Villanova",s2:9,n2:"Utah State"},{s1:5,n1:"Wisconsin",s2:12,n2:"High Point"},{s1:4,n1:"Arkansas",s2:13,n2:"Hawai'i"},{s1:6,n1:"BYU",s2:11,n2:"Texas"},{s1:3,n1:"Gonzaga",s2:14,n2:"Kennesaw St"},{s1:7,n1:"Miami",s2:10,n2:"Missouri"},{s1:2,n1:"Purdue",s2:15,n2:"Queens"}],
+  "South":[{s1:1,n1:"Florida",s2:16,n2:"Prairie View"},{s1:8,n1:"Clemson",s2:9,n2:"Iowa"},{s1:5,n1:"Vanderbilt",s2:12,n2:"McNeese"},{s1:4,n1:"Nebraska",s2:13,n2:"Troy"},{s1:6,n1:"North Carolina",s2:11,n2:"VCU"},{s1:3,n1:"Illinois",s2:14,n2:"Penn"},{s1:7,n1:"Saint Mary's",s2:10,n2:"Texas A&M"},{s1:2,n1:"Houston",s2:15,n2:"Idaho"}],
+  "Midwest":[{s1:1,n1:"Michigan",s2:16,n2:"Howard"},{s1:8,n1:"Georgia",s2:9,n2:"Saint Louis"},{s1:5,n1:"Texas Tech",s2:12,n2:"Akron"},{s1:4,n1:"Alabama",s2:13,n2:"Hofstra"},{s1:6,n1:"Tennessee",s2:11,n2:"Miami OH"},{s1:3,n1:"Virginia",s2:14,n2:"Wright St"},{s1:7,n1:"Kentucky",s2:10,n2:"Santa Clara"},{s1:2,n1:"Iowa State",s2:15,n2:"Tennessee St"}],
 };
 
 // Each entry in gameEntries = one card to display
